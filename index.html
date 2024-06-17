@@ -3,13 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TCoffee - The Best Coffee in Town</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Raleway', sans-serif;
+            background-color: #1a1a1a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        nav {
+            width: 100%;
+            padding: 10px 50px;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            box-sizing: border-box;
+        }
+        nav .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #ff8c00;
+        }
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-image: url('https://images.unsplash.com/photo-1527512666523-bb0e4389d842?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+        .content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            padding: 0 20px;
+        }
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+        }
+        p {
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+        .button {
+            margin-top: 20px;
+        }
+        .button a {
+            text-decoration: none;
+            background-color: #ff8c00;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            transition: background-color 0.3s;
+        }
+        .button a:hover {
+            background-color: #ff7000;
+        }
+
+        .scroll-section {
+            display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 50px 20px;
+            background-color: #1a1a1a;
+        }
+        .card {
+            display: inline-block;
+            width: 300px;
+            margin-right: 20px;
+            background: #2a2a2a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 
+            0.1);
+            text-align: left;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .card p {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 10px 20px;
+            }
+            nav ul {
+                gap: 10px;
+            }
+            h1 {
+                font-size: 3rem;
+            }
+            p {
+                font-size: 1.2rem;
+            }
+            .button a {
+                font-size: 1rem;
+                padding: 8px 16px;
+            }
+            .card {
+                width: 250px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello User, It;s first Jenkin Demo</h1>
-    <p>Its Modified</p>
-    <p>Pipeline As a code</p>
-    <p>Hello From the Jenkins Pipeline</p>
-    <p>Have a good day</p>
+    <nav>
+        <div class="logo">TCoffee</div>
+        <ul>
+            <li><a href="#coffee-types"><i class="fas fa-coffee"></i> Coffee Types</a></li>
+            <li><a href="#about"><i class="fas fa-info-circle"></i> About Us</a></li>
+            <li><a href="#menu"><i class="fas fa-book"></i> Menu</a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="overlay"></div>
+        <div class="content">
+            <h1 id="headline">Welcome to TCoffee</h1>
+            <p id="subheadline">The best coffee in town, brewed with love.</p>
+            <div class="button" id="button">
+                <a href="#menu">Explore Our Menu</a>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script>
+        gsap.from("nav", { duration: 1, y: -100, opacity: 0, ease: "bounce" });
+        gsap.from("#headline", { duration: 1, y: -50, opacity: 0, ease: "bounce" });
+        gsap.from("#subheadline", { duration: 1, y: 50, opacity: 0, delay: 0.5, ease: "power1.inOut" });
+        gsap.from("#button", { duration: 1, opacity: 0, delay: 1, scale: 0.8, ease: "elastic" });
+        gsap.from("#scrollSection", { duration: 1, opacity: 0, y: 100, delay: 1.5 });
+    </script>
 </body>
 </html>
